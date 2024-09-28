@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.validateDOB = function() {
         dobInput.setCustomValidity(''); 
-
+ localStorage.clear();
         const dob = dobInput.value;
         const dateOfBirth = new Date(dob);
         const today = new Date();
