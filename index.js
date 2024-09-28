@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById('registrationForm');
     const dobInput = document.getElementById('dob');
     const entriesTableBody = document.getElementById('entriesTableBody');
-    localStorage.clear();
+
 
     window.validateDOB = function() {
         dobInput.setCustomValidity(''); 
