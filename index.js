@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const dobInput = document.getElementById('dob');
     const entriesTableBody = document.getElementById('entriesTableBody');
 
-
     window.validateDOB = function() {
         dobInput.setCustomValidity(''); 
 
@@ -27,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (age > 55) {
             const maxValidDate = new Date(today);
             maxValidDate.setFullYear(today.getFullYear() - 55);
-            dobInput.setCustomValidity(` Your dob should be on or after ${maxValidDate.toLocaleDateString()}.`);
+            dobInput.setCustomValidity(`Your dob should be on or after ${maxValidDate.toLocaleDateString()}.`);
             dobInput.reportValidity(); 
             return;
         }
@@ -40,10 +39,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const email = document.getElementById('email').value.trim();
         const password = document.getElementById('password').value.trim();
         const termsAccepted = document.getElementById('terms').checked;
-
-        
-
         const dob = dobInput.value; 
+
         const entry = {
             name: name,
             email: email,
@@ -52,6 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
             termsAccepted: termsAccepted
         };
 
+        // Save entry to localStorage
         let entries = JSON.parse(localStorage.getItem('entries')) || [];
         entries.push(entry);
         localStorage.setItem('entries', JSON.stringify(entries));
@@ -62,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function displayEntries() {
         let entries = JSON.parse(localStorage.getItem('entries')) || [];
-        entriesTableBody.innerHTML = ''; 
+        entriesTableBody.innerHTML = ''; // Clear existing entries
         entries.forEach(entry => {
             const row = document.createElement('tr');
             row.innerHTML = `
@@ -76,5 +74,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // Display entries when the page loads
     displayEntries();
 });
